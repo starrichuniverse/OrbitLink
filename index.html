@@ -15,7 +15,7 @@
 </head>
 <body>
   <h1>OrbitLink 개인정보처리방침</h1>
-  <p class="updated">최종 수정일: 2026년 4월 15일</p>
+  <p class="updated">최종 수정일: 2026년 5월 20일</p>
 
   <h2>1. 수집하는 정보</h2>
   <p>OrbitLink는 다음의 정보만을 처리합니다:</p>
@@ -24,6 +24,7 @@
     <li><strong>인증 토큰(JWT):</strong> 브라우저 로컬 스토리지에만 저장되며, 서드파티에 공유되지 않습니다.</li>
     <li><strong>북마크 및 매핑 설정:</strong> 브라우저 로컬 스토리지에만 저장됩니다.</li>
     <li><strong>팝업 진행 상태:</strong> 최근 선택한 단계와 입력값 일부를 브라우저 로컬 스토리지에 저장할 수 있습니다.</li>
+    <li><strong>탭/창 문맥 정보:</strong> 현재 탭 또는 마지막 활성 창의 업무 탭 식별에 한해 일시적으로 사용하며, 브라우징 기록 수집 목적으로 저장하지 않습니다.</li>
   </ul>
 
   <h2>2. 정보 이용 목적</h2>
@@ -31,13 +32,16 @@
     <li>Supabase를 통해 사내 보험 상품 데이터를 조회합니다.</li>
     <li>Google OAuth를 통한 사내 구성원 인증에만 사용합니다.</li>
     <li>관리자가 공개 모드를 활성화한 경우 일반 사용자가 로그인 없이 팝업에 접근할 수 있도록 합니다.</li>
+    <li>콘텐츠 스크립트는 사용자가 팝업에서 명시적으로 실행한 경우에만 현재 탭에 동적으로 주입하며, 값 조회와 입력 실행도 해당 시점에만 수행합니다.</li>
+    <li>host_permissions는 Supabase API 도메인 2개로 제한되며 localhost, 127.0.0.1, broad host 권한을 사용하지 않습니다.</li>
+    <li>web_accessible_resources의 &lt;all_urls&gt; 공개를 사용하지 않습니다.</li>
     <li>수집된 정보를 마케팅, 광고, 제3자 제공에 활용하지 않습니다.</li>
   </ul>
 
   <h2>3. 외부 서비스 연동</h2>
   <ul>
-    <li><strong>Supabase (supabase.co):</strong> 상품 데이터베이스 및 인증 처리. <a href="https://supabase.com/privacy" target="_blank" rel="noreferrer">Supabase 개인정보처리방침</a></li>
-    <li><strong>Google OAuth:</strong> 로그인 인증 전용. <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google 개인정보처리방침</a></li>
+    <li><strong>Supabase (supabase.co):</strong> 상품 데이터베이스 및 인증 처리. <a href="https://supabase.com/privacy" target="_blank">Supabase 개인정보처리방침</a></li>
+    <li><strong>Google OAuth:</strong> 로그인 인증 전용. <a href="https://policies.google.com/privacy" target="_blank">Google 개인정보처리방침</a></li>
   </ul>
 
   <h2>4. 공개 모드 안내</h2>
@@ -49,7 +53,15 @@
   <h2>6. 대상 사용자</h2>
   <p>본 확장 프로그램은 사내 인가된 구성원 전용이며, 일반 공개 배포를 목적으로 하지 않습니다.</p>
 
-  <h2>7. 문의</h2>
+  <h2>7. 권한 및 실행 원칙</h2>
+  <ul>
+    <li><strong>activeTab, scripting:</strong> 사용자가 현재 보고 있는 페이지에서 명시적으로 실행한 경우에만 입력 보조를 수행합니다.</li>
+    <li><strong>tabs, windows:</strong> 현재 창 또는 마지막 활성 창 범위에서 대상 업무 탭을 식별하는 용도로만 사용합니다.</li>
+    <li><strong>identity:</strong> 관리자 설정 변경을 위한 Google OAuth 인증에만 사용합니다.</li>
+    <li><strong>storage:</strong> 세션/공개 모드/매핑/팝업 상태 저장에만 사용하며 외부 제3자에게 판매하거나 공유하지 않습니다.</li>
+  </ul>
+
+  <h2>8. 문의</h2>
   <p>개인정보 관련 문의: <a href="mailto:starrich.universe@gmail.com">starrich.universe@gmail.com</a></p>
 </body>
 </html>
